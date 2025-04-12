@@ -1,5 +1,5 @@
 # Digital Aristotle
-### Author: Valentin de la Pena
+### Author: Valentín de la Peña
 ### Date: 4/11/25
 
 ## Overview
@@ -13,6 +13,10 @@ I still have a lot to learn, but now that I'm looking for work and need to study
 ## Structure
 
 Development will focus on getting a minimally functioning version up fast and then adding improvements where needed. Major developments will be chronicled in developer notes.
+
+## Setup
+
+Create a .env file with relevant keys. Early versions of this project will use the OpenAI API for simplicity.
 
 ## Usage Policy
 
