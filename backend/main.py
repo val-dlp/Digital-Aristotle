@@ -1,7 +1,10 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from openai import OpenAI
 import uvicorn
+
+client = OpenAI()
 
 # Initialize FastAPI app
 app = FastAPI(title="My FastAPI App")
@@ -22,6 +25,10 @@ class Item(BaseModel):
     price: float
     tax: float = None
 
+class Chat(BaseModel):
+    system_prompt: str
+    user_message: str
+
 # POST endpoint
 @app.post("/items/")
 async def create_item(item: Item):
@@ -34,13 +41,30 @@ async def create_item(item: Item):
             total += item.tax
             
         return {
-            "status": "success",
+            "status": "successful",
             "message": f"Item '{item.name}' created successfully",
             "item": item.dict(),
             "total_price": total
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/chat/")
+async def GPT(chat: Chat):
+    """
+    Standard GPT function with model flexibility.
+    """
+    model="gpt-4o-mini"
+    completion = client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": chat.system_prompt},
+                    {"role": "user", "content": chat.user_message},
+                ],
+            )
+    
+    event = completion.choices[0].message.content
+    return event
 
 # Basic GET endpoint for testing
 @app.get("/")
