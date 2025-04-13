@@ -11,23 +11,13 @@
         <h1>Item Submission Form</h1>
         
         <div class="form-group">
-            <label for="name">Item Name:</label>
-            <input type="text" id="name" placeholder="Enter item name">
+            <label for="system_prompt">System Prompt:</label>
+            <input type="text" id="prompt" placeholder="You are a friendly chatbot">
         </div>
         
         <div class="form-group">
-            <label for="price">Price ($):</label>
-            <input type="number" id="price" placeholder="Enter price" step="0.01">
-        </div>
-        
-        <div class="form-group">
-            <label for="description">Description (optional):</label>
-            <input type="text" id="description" placeholder="Enter description">
-        </div>
-        
-        <div class="form-group">
-            <label for="tax">Tax ($) (optional):</label>
-            <input type="number" id="tax" placeholder="Enter tax amount" step="0.01">
+            <label for="user_message">User Message:</label>
+            <input type="text" id="message" placeholder="Enter message">
         </div>
         
         <button id="submit-btn">Submit Item</button>

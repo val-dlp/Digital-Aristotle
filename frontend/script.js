@@ -5,31 +5,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function submitForm() {
     // Get form values
-    const name = document.getElementById('name').value;
-    const price = parseFloat(document.getElementById('price').value);
-    const description = document.getElementById('description').value;
-    const tax = document.getElementById('tax').value ? parseFloat(document.getElementById('tax').value) : null;
+    const system_prompt = document.getElementById('prompt').value;
+    const user_message = document.getElementById('message').value;
     
     // Validate required fields
-    if (!name || isNaN(price)) {
-        showResult('Please fill in all required fields (name and price)', true);
+    if (!system_prompt || !user_message) {
+        showResult('Please fill in all required fields (prompt and message)', true);
         return;
     }
     
     // Prepare data
     const data = {
-        name: name,
-        price: price,
+        system_prompt: system_prompt,
+        user_message: user_message,
     };
-    
-    // Add optional fields if they have values
-    if (description) data.description = description;
-    if (tax !== null) data.tax = tax;
     
     try {
         //console.log(data)
         // Send POST request to API
-        const response = await fetch('http://localhost:8000/items/', {
+        const response = await fetch('http://localhost:8000/chat/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
