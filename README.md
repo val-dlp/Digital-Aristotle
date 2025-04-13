@@ -18,6 +18,22 @@ Development will focus on getting a minimally functioning version up fast and th
 
 Create a .env file with relevant keys. Early versions of this project will use the OpenAI API for simplicity.
 
+Recommended to create a virtual environment.
+
+Packages:
+
+pip install fastapi uvicorn pydantic openai
+
+To start the backend server
+
+cd backend
+python main.py
+
+To start the frontend
+
+cd frontent
+
+
 ## Usage Policy
 
 I'm doing this for fun and if any of it is useful to anyone, that'd make me super happy! But if you're going to re-use large portions of my code please ask for permission and refrain from doing so for commercial purposes.
